@@ -15,9 +15,9 @@
 
 like_list1 = ["Karina", "Tom", "Alex", "Jacob", "Mark", "Max"]
 
-def like_message(alist):
+def likes(alist):
     if len(alist) == 0:
-        return "No one likes this"
+        return "no one likes this"
     elif len(alist) == 1:
         return f"{alist[0]} likes this"
     elif len(alist) == 2:
@@ -27,4 +27,4 @@ def like_message(alist):
     else:
         return f"{alist[0]}, {alist[1]} and {len(alist) - 2} others like this"
 
-print(like_message(like_list1))
+print(likes(like_list1))
