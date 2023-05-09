@@ -3,7 +3,21 @@
 {% block content %}
 
 <div>
-    <p>Pokemon Body</p>
+    <h2>Pokemon Randomizer!</h2>
+
+    <h3>Here are my Pokemon choices for you!</h3>
+
+    <div class="card_container">
+        {% for k in _dict.keys() %}
+        <div class="card text-white bg-dark mb-3 card_style">
+            <img class="card-img-top" src={{ _dict[k][2] }} alt={{ _dict[k][1] }} style="max-width: 20rem;">
+            <div class="card-body">
+                <h5 class="card-title">#{{ _dict[k][0] }}: {{ _dict[k][1] }}</h5>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
 </div>
 
 {% endblock %}
