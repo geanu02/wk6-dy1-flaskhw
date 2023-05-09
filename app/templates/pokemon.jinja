@@ -2,10 +2,11 @@
 
 {% block content %}
 
-<div>
-    <h2>Pokemon Randomizer!</h2>
-
-    <h3>Here are my Pokemon choices for you!</h3>
+<div class="pokemon_container">
+    <div class="pokemon_heading">
+        <h2>Today's Favorite Pokemon</h2>
+        <h4>{{ _date }}</h3>
+    </div>
 
     <div class="card_container">
         {% for k in _dict.keys() %}
