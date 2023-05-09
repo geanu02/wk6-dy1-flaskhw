@@ -1,12 +1,18 @@
 from flask import render_template
 
+import pokebase as pb
+
 from . import bp 
 
 @bp.route('/')
 def home():
+
+    s1 = pb.SpriteResource('pokemon', 17)
+
     return render_template(
         'index.jinja',
-        title="PokeFavorites: Welcome!"
+        title="PokeFavorites: Welcome!",
+        sprite1=s1.url
     )
 
 @bp.route('/about')
