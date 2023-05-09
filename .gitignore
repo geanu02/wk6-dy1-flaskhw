@@ -1,0 +1,5 @@
+pokenv/
+.vscode/
+__pycache__/
+
+.ENV
