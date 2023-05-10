@@ -1,5 +1,6 @@
 from flask import Blueprint
 
+
 import random
 import pokebase as pb
 

@@ -8,6 +8,13 @@ img {
     width: 100%;
 }
 
+/* Base.jinja */
+
+.flash_container {
+    margin: 0 auto; 
+    max-width: 800px;
+}
+
 .base_container {
     margin: 50px auto;
     background-color: whitesmoke;
@@ -55,4 +62,22 @@ img {
 .card_style {
     margin: 10px;
     padding: 25px;
+}
+
+/* Signup.jinja */
+
+.form_container {
+    width: 100%;
+    background-image: url('/static/pokewallpaper.jpeg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+}
+
+.form_signup {
+    padding: 30px;
+}
+
+.error_msg {
+    color: orangered;
 }

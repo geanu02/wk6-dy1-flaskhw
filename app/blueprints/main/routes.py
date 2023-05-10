@@ -15,10 +15,3 @@ def about():
         'about.jinja',
         title="PokeFavorites: About Page"
     )
-
-@bp.route('/access')
-def access():
-    return render_template(
-        'access.jinja',
-        title="PokeFavorites: Access Page"
-    )
