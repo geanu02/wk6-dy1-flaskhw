@@ -14,7 +14,8 @@
         <div class="card text-white bg-dark mb-3 card_style">
             <img class="card-img-top" src="{{ _dict[k][1] }}" alt="{{ _dict[k][0] }}" style="max-width: 20rem;">
             <div class="card-body">
-                <h5 class="card-title">#{{ k }}: {{ _dict[k][0] }}</h5>
+                <h6 class="card_number">{{ k }}</h6>
+                <h5 class="card_title">{{ _dict[k][0] }}</h5>
             </div>
         </div>
         {% endfor %}
@@ -36,13 +37,11 @@
             <p>{{ form.submit() }}</p>
         </form>
         {% else %}
-        <center>
+        <div class="sign_offer">
             <a class="link-opacity-25-hover" href="{{ url_for ('auth.signup') }}">Sign up</a> or
             <a class="link-opacity-25-hover" href="{{ url_for ('auth.signin') }}">sign in</a> to select your favorite
             Pokemon!
-        </center>
-
-
+        </div>
         {% endif %}
     </div>
 </div>
