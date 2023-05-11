@@ -19,9 +19,8 @@
         </div>
         {% endfor %}
     </div>
-
-    {% if current_user.is_authenticated %}
     <div>
+        {% if current_user.is_authenticated %}
         <form action="" method="POST" novalidate class="form_signup">
             <h2>Which Pokemon would you like to add?</h2>
             {{ form.hidden_tag() }}
@@ -30,15 +29,22 @@
                 {{ form.poke_num.label }}<br>
                 {{ form.poke_num(size=8) }}
                 {% for error in form.poke_num.errors %}
-                    <span class="error_msg">{{ error }}</span>
+                <span class="error_msg">{{ error }}</span>
                 {% endfor %}
             </p>
             <br>
             <p>{{ form.submit() }}</p>
         </form>
-    </div>
-    {% endif %}
+        {% else %}
+        <center>
+            <a class="link-opacity-25-hover" href="{{ url_for ('auth.signup') }}">Sign up</a> or
+            <a class="link-opacity-25-hover" href="{{ url_for ('auth.signin') }}">sign in</a> to select your favorite
+            Pokemon!
+        </center>
 
+
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}
