@@ -3,6 +3,7 @@
 {% block content %}
 
 <div class="pokemon_container">
+
     <div class="pokemon_heading">
         <h2>Today's Favorite Pokemon</h2>
         <h4>{{ _date }}</h3>
@@ -11,13 +12,32 @@
     <div class="card_container">
         {% for k in _dict.keys() %}
         <div class="card text-white bg-dark mb-3 card_style">
-            <img class="card-img-top" src={{ _dict[k][2] }} alt={{ _dict[k][1] }} style="max-width: 20rem;">
+            <img class="card-img-top" src="{{ _dict[k][1] }}" alt="{{ _dict[k][0] }}" style="max-width: 20rem;">
             <div class="card-body">
-                <h5 class="card-title">#{{ _dict[k][0] }}: {{ _dict[k][1] }}</h5>
+                <h5 class="card-title">#{{ k }}: {{ _dict[k][0] }}</h5>
             </div>
         </div>
         {% endfor %}
     </div>
+
+    {% if current_user.is_authenticated %}
+    <div>
+        <form action="" method="POST" novalidate class="form_signup">
+            <h2>Which Pokemon would you like to add?</h2>
+            {{ form.hidden_tag() }}
+            <br>
+            <p>
+                {{ form.poke_num.label }}<br>
+                {{ form.poke_num(size=8) }}
+                {% for error in form.poke_num.errors %}
+                    <span class="error_msg">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <br>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+    {% endif %}
 
 </div>
 

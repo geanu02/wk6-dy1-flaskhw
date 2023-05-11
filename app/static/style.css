@@ -21,6 +21,10 @@ img {
     max-width: 980px;
 }
 
+.li_item {
+    list-style-type: none;
+}
+
 /* Index.jinja */
 
 .home-hero-container {
