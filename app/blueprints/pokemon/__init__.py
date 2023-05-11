@@ -1,11 +1,9 @@
 from flask import Blueprint
 
-
 import random
 import pokebase as pb
 
 bp = Blueprint('pokemon', __name__, url_prefix='/pokemon')
-
 
 def load_pokemon():
     _dict = {}
@@ -18,5 +16,8 @@ def load_pokemon():
     return _dict
 
 lp = load_pokemon()
+
+def lookup_pokemon(num):
+    return pb.pokemon(num).name.title()
 
 from app.blueprints.pokemon import routes
