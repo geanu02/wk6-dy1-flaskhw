@@ -10,6 +10,10 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 
+login.login_view = 'auth.signin'
+login.login_message = "Login required"
+login.login_message_category = "warning"
+
 from app.blueprints.main import bp as main_bp
 app.register_blueprint(main_bp)
 from app.blueprints.pokemon import bp as poke_bp
