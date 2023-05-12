@@ -12,7 +12,7 @@ def verify_trainer():
     password = content['password']
     user = User.query.filter_by(username=username).first()
     if user and user.check_password(password):
-        return jsonify([{'message': {'username': user.username}}])
+        return jsonify([{"token": user.token}])
     return jsonify({'message': 'User Info not Found'})
 
 # Register User
@@ -36,4 +36,6 @@ def register_trainer():
     user.password = user.hash_password(password)
     user.add_token()
     user.commit()
-    return jsonify([{'message': f"{user.username} successfully registered!"}])
+    return jsonify([{
+        "message": f"{user.username} successfully registered!"
+    }])
