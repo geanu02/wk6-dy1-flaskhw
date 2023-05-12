@@ -11,9 +11,9 @@
     <div class="card_container">
         {% for _poke in user.fave_pokemon %}
         <div class="card text-white bg-dark mb-3 card_style">
+            <h6 class="card_number">{{ _poke.poke_num }}</h6>
             <img class="card-img-top" src="{{ _poke.poke_art }}" alt="{{ _poke.poke_name }}" style="max-width: 20rem;">
             <div class="card-body">
-                <h6 class="card_number">{{ _poke.poke_num }}</h6>
                 <h5 class="card_title">{{ _poke.poke_name }}</h5>
             </div>
         </div>

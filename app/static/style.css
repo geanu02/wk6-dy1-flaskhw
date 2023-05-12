@@ -79,8 +79,10 @@ img {
 .card_title {
     line-height: 1.1;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
     text-transform: uppercase;
-    letter-spacing: -0.05rem;
+    letter-spacing: -0.03rem;
+    font-size: 1rem;
 }
 
 .sign_offer {

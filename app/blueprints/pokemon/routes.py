@@ -26,7 +26,7 @@ def todays_pokemon():
                 fave.poke_art = lp[poke_num][1]
                 fave.user_id = logged_in_user
                 fave.commit()
-                flash(f"{poke_name} successfully added to your party!", "success")
+                flash(f"{poke_name} has been successfully added to your party!", "success")
             # If Pokemon is in the FavePokemon table and user:
             else:
                 flash(f"{poke_name} is already in your party!", "warning")
@@ -36,7 +36,7 @@ def todays_pokemon():
                     f"{poke_name} isn't one of today's six favorites, but it's part of your team!", "warning")
             else:
                 flash(
-                    f"{poke_name} isn't one of today's six chosen Pokemon. Try again?", "warning")
+                    f"{poke_name} isn't one of today's chosen six Pokemon. Try again?", "warning")
     return render_template(
         'pokemon.jinja',
         title="PokeFavorites: Pokemon",

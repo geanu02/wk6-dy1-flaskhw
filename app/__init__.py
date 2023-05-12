@@ -20,5 +20,7 @@ from app.blueprints.pokemon import bp as poke_bp
 app.register_blueprint(poke_bp)
 from app.blueprints.auth import bp as auth_bp
 app.register_blueprint(auth_bp)
+from app.blueprints.api import bp as api_bp
+app.register_blueprint(api_bp)
 
 from app import models

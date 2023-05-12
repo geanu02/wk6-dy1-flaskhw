@@ -12,9 +12,9 @@
     <div class="card_container">
         {% for k in _dict.keys() %}
         <div class="card text-white bg-dark mb-3 card_style">
+            <h6 class="card_number">{{ k }}</h6>
             <img class="card-img-top" src="{{ _dict[k][1] }}" alt="{{ _dict[k][0] }}" style="max-width: 20rem;">
             <div class="card-body">
-                <h6 class="card_number">{{ k }}</h6>
                 <h5 class="card_title">{{ _dict[k][0] }}</h5>
             </div>
         </div>

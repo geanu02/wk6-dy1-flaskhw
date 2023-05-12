@@ -26,7 +26,10 @@ def signup():
             u.password = u.hash_password(form.password.data)
             u.commit()
             flash(f"{input_username} successfully registered!", "success")
-            return redirect(url_for("main.home"))
+            user_login = User.query.filter_by(username=form.username.data).first()
+            flash(f"Welcome {user_login.first_name}! Time for you to add Pokemon to your party!", "success")
+            login_user(user_login)
+            return redirect(url_for("pokemon.todays_pokemon"))
         elif email_check and not username_check:
             flash(f"{input_email} already registered. Try again.", "warning")
         elif not email_check and username_check:
@@ -51,7 +54,7 @@ def signin():
         if user and check_pass:
             flash(f"Welcome back, {form.username.data}! You are signed in!", "success")
             login_user(user)
-            return redirect(url_for("main.home"))
+            return redirect(url_for("pokemon.todays_pokemon"))
         if not user and check_pass:
             flash(
                 f"{form.username.data} not registered.", "warning")
