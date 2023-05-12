@@ -9,9 +9,9 @@ from app import db, login
 def load_user(user_id):
     return User.query.get(user_id)
 
-
 class User(UserMixin, db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
+    username =  db.Column(db.String(100), unique=True)
     email = db.Column(db.String(100), unique=True)
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
@@ -39,11 +39,12 @@ class FavePokemon(db.Model):
     fave_id = db.Column(db.Integer, primary_key=True)
     poke_num = db.Column(db.Integer)
     poke_name = db.Column(db.String(75))
+    poke_art = db.Column(db.String)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
 
     def __repr__(self):
-        return f"Pokemon # {self.poke_num}: {self.poke_name}"
+        return f"<Pokemon #{self.poke_num}: {self.poke_name.title()}>"
 
     def commit(self):
         db.session.add(self)

@@ -1,0 +1,28 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+
+<div class="pokemon_container">
+
+    <div class="pokemon_heading">
+        <h2>{{ user.first_name }}'s Pokemon Party</h2>
+    </div>
+
+    <div class="card_container">
+        {% for _poke in user.fave_pokemon %}
+        <div class="card text-white bg-dark mb-3 card_style">
+            <img class="card-img-top" src="{{ _poke.poke_art }}" alt="{{ _poke.poke_name }}" style="max-width: 20rem;">
+            <div class="card-body">
+                <h6 class="card_number">{{ _poke.poke_num }}</h6>
+                <h5 class="card_title">{{ _poke.poke_name }}</h5>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        {% if current_user.is_authenticated %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
