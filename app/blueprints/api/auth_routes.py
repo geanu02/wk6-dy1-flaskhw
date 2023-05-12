@@ -34,5 +34,6 @@ def register_trainer():
     user = User(email=email, username=username,
                 first_name=first_name, last_name=last_name)
     user.password = user.hash_password(password)
+    user.add_token()
     user.commit()
     return jsonify([{'message': f"{user.username} successfully registered!"}])

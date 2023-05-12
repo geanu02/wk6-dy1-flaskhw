@@ -24,6 +24,7 @@ def signup():
                 last_name=form.last_name.data
             )
             u.password = u.hash_password(form.password.data)
+            u.add_token()
             u.commit()
             flash(f"{input_username} successfully registered!", "success")
             user_login = User.query.filter_by(username=form.username.data).first()
