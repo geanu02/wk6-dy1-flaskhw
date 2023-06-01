@@ -6,8 +6,9 @@ from app.blueprints.api.helpers import token_required
 
 # Receive All Pokemon Favorites
 @bp.get('/pokeall')
-@token_required
-def poke_all(user):
+# @token_required
+def poke_all():
+# def poke_all(user):
     pokemon = FavePokemon.query.all()
     if pokemon:
         return jsonify([{
@@ -22,8 +23,9 @@ def poke_all(user):
 
 # Receive Favorite Pokemon from Single Pokemon Trainer
 @bp.get('/<username>/pokemon')
-@token_required
-def trainer_pokemon(user, username):
+# @token_required
+def trainer_pokemon(username):
+#def trainer_pokemon(user, username):
     trainer = User.query.filter_by(username=username).first()
     if trainer:
         return jsonify([{
@@ -38,8 +40,9 @@ def trainer_pokemon(user, username):
 
 # Receive Favorite Pokemon by Pokemon Number
 @bp.get('/pokemon/<poke_num>')
-@token_required
-def get_Pokemon(user, poke_num):
+# @token_required
+def get_Pokemon(poke_num):
+#def get_Pokemon(user, poke_num):
     try:
         poke = FavePokemon.query.filter_by(poke_num=poke_num).first()
         return jsonify([{
