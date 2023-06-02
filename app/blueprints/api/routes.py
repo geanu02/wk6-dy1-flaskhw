@@ -30,9 +30,9 @@ def trainer_pokemon(user, username):
     if trainer:
         return jsonify([{
             'fave_id': poke.fave_id,
-            'poke_num': poke.poke_num,
-            'poke_name': poke.poke_name,
-            'poke_art': poke.poke_art,
+            'id': poke.poke_num,
+            'pokeName': poke.poke_name,
+            'pokeImg': poke.poke_art,
             'date_added': poke.date_added,
             'pokemon_trainer': poke.user_id
         } for poke in trainer.fave_pokemon]), 200
