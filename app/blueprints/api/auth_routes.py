@@ -37,5 +37,7 @@ def register_trainer():
     user.add_token()
     user.commit()
     return jsonify([{
-        "message": f"{user.username} successfully registered!"
+        "message": f"{user.username} successfully registered!",
+        "success": True,
+        "token": user.token
     }])
