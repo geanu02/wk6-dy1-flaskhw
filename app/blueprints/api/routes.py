@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import request, jsonify
 
 from . import bp
 from app.models import User, FavePokemon
@@ -55,3 +55,46 @@ def get_Pokemon(user, poke_num):
     except:
         jsonify([{'message':'Pokemon not registered.'}]), 404
 
+# Add Pokemon to Favorites
+@bp.route('/add/<poke_num>', methods=['POST'])
+@token_required
+def add_Pokemon(user, poke_num):
+    content = request.json
+    username = content['username']
+    token = content['token']
+    poke_num = content['id']
+    poke_name = content['pokeName']
+    poke_art = content['pokeImg']
+
+    userByName = User.query.filter_by(username=username).first()
+    if user.user_id != userByName.user_id:
+        return jsonify([{
+            "message": "Token and User not in same account",
+            "status": "error",
+            "success": False
+        }])
+    pokenum_check = poke_num in [num.poke_num for num in user.fave_pokemon]
+    if not pokenum_check:
+    # If Pokemon is not in the FavePokemon table:
+        fave = FavePokemon(poke_num=poke_num)
+        fave.poke_name = poke_name
+        fave.poke_art = poke_art
+        fave.user_id = user.user_id
+        fave.commit()
+        return jsonify([{
+            "message": f"{poke_name} successfully added to favorites!",
+            "status": "added",
+            "success": True
+        }])
+    elif pokenum_check:
+        return jsonify([{
+            "message": f"{poke_name} is already in favorites!",
+            "status": "favorites",
+            "success": False
+        }])
+    else:
+        return jsonify([{
+            "message": f"{poke_name} is not added to favorites!",
+            "status": "error",
+            "success": False
+        }])
