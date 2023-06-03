@@ -61,7 +61,6 @@ def get_Pokemon(user, poke_num):
 def add_Pokemon(user, poke_num):
     content = request.json
     username = content['username']
-    token = content['token']
     poke_num = content['id']
     poke_name = content['pokeName']
     poke_art = content['pokeImg']
