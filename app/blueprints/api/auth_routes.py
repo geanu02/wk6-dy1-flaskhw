@@ -27,10 +27,16 @@ def register_trainer():
     last_name = content['last_name']
     user_check = User.query.filter_by(username=username).first()
     if user_check:
-        return jsonify([{'message': 'Username taken. Try again.'}])
+        return jsonify([{
+            'message': 'Username taken. Try again.',
+            'success': False
+        }])
     email_check = User.query.filter_by(email=email).first()
     if email_check:
-        return jsonify([{'message': 'Email taken. Try again.'}])
+        return jsonify([{
+            'message': 'Email taken. Try again.',
+            'success': False
+        }])
     user = User(email=email, username=username,
                 first_name=first_name, last_name=last_name)
     user.password = user.hash_password(password)
