@@ -5,7 +5,6 @@ from secrets import token_urlsafe
 
 from app import db, login
 
-
 @login.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
